@@ -111,22 +111,23 @@ btnPlusminus.addEventListener('click', () => {
 });
 
 function limitDigits(result) {
-    if (result.toString().length > 11) {
+    const maxDigits = 8;
+    if (result.toString().length > maxDigits) {
         if (result.toString().includes('-')) {
             if (result.toString().includes('0.')) {
-                result = parseFloat(result.toPrecision(9));
+                result = parseFloat(result.toPrecision(maxDigits - 2));
             } else if (result.toString().includes('.')) {
-                result = parseFloat(result.toPrecision(10));
+                result = parseFloat(result.toPrecision(maxDigits - 1));
             } else {
-                result = Number(result.toString().slice(0, 12));
+                result = Number(result.toString().slice(0, maxDigits + 2));
             };
         } else {
             if (result.toString().includes('0.')) {
-                result = parseFloat(result.toPrecision(10));
+                result = parseFloat(result.toPrecision(maxDigits - 1));
             } else if (result.toString().includes('.')) {
-                result = parseFloat(result.toPrecision(11));
+                result = parseFloat(result.toPrecision(maxDigits));
             } else {
-                result = Number(result.toString().slice(0, 11));
+                result = Number(result.toString().slice(0, maxDigits));
             };
         };
     };

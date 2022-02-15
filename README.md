@@ -16,3 +16,9 @@ The basic version of the calculator is finally finished!
 - Just found out that the codes inside btnOperator and btnEqual which manupilates the digits of the number are growing too complicated, after adding the feature of turning positive number to negative number. Thus the codes are transferred out and became a new function limitDigits().
 - Added btnDot which allows the user to enter only one dot into the displayNumber.
 - Added btnPlusminus which allows the user to turn a positive number to a negative one and vice versa. 
+
+
+- Made it looked nicer! Change of colors, change of fonts, and added borders around the calculator and buttons too.
+- While decorating the calculator, I found out that the maximium digit of the displayNumber changes when the font is changed, so I have updated limitDigits() functions too, where the maxDigits should be a number input manually. After changing the font-family, maxDigits is updated.
+- ? An advanced way of doing this, should be adjusting maxDigits when the browser's font is read whenever the user loads the page?
+
