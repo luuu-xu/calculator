@@ -22,7 +22,7 @@ function operate(inputObj) {
 const screen = document.querySelector('.screen');
 
 const btnsNumber = document.querySelectorAll('.number');
-//let inputString = '';
+
 let inputObj = {
     firstNumber: '',
     secondNumber: '',
@@ -32,24 +32,9 @@ let inputObj = {
 let displayNumber = '';
 btnsNumber.forEach((btn) => {
     btn.addEventListener('click', () => {
-        //inputString += `${btn.textContent} `;
-        //screen.textContent = inputString;
         displayNumber += `${btn.textContent}`;
-        //console.log(displayNumber);
         screen.textContent = displayNumber;
-        //inputString += `${btn.textContent}`;
-        //console.log(inputString);
-        /*if (inputObj.firstNumber === '' 
-            && inputObj.secondNumber === '' 
-            && inputObj.operator === '') {
-            inputObj.firstNumber = (Number(displayNumber));
-        } else if (inputObj.firstNumber !== '' 
-                    && inputObj.secondNumber === ''
-                    && inputObj.operator !== '') {
-            inputObj.secondNumber = (Number(displayNumber));
-        };*/
-        console.log(displayNumber);
-        console.log(inputObj);
+        //console.log(inputObj);
     });
 });
 
@@ -64,10 +49,7 @@ btnsOperator.forEach((btn) => {
             inputObj.operator = window[btn.classList[0]];
         } else if (inputObj.firstNumber !== '' && inputObj.operator !== '') {
             inputObj.secondNumber = (Number(displayNumber));
-            //const result = operate(inputObj);
             let result = operate(inputObj);
-            //const result = Math.round((operate(inputObj)) * 10000000000) / 10000000000;
-            //console.log(result.toString().length);
             if (result.toString().length > 11) {
                 if (result.toString().includes('.')) {
                     result = parseFloat(result.toPrecision(11));
@@ -81,9 +63,7 @@ btnsOperator.forEach((btn) => {
             inputObj.secondNumber = '';
             inputObj.operator = window[btn.classList[0]];
         };
-        //displayNumber = '';
-        //screen.textContent = displayNumber;
-        console.log(inputObj);
+        //console.log(inputObj);
     });
 });
 
@@ -92,8 +72,6 @@ btnEqual.addEventListener('click', () => {
     if (inputObj.firstNumber !== '' && inputObj.operator !== '') {
         inputObj.secondNumber = (Number(displayNumber));
         let result = operate(inputObj);
-        //const result = Math.round((operate(inputObj)) * 10000000000) / 10000000000;
-        //console.log(result.toString().length);
         if (result.toString().length > 11) {
             if (result.toString().includes('.')) {
                 result = parseFloat(result.toPrecision(11));
@@ -106,9 +84,8 @@ btnEqual.addEventListener('click', () => {
         inputObj.firstNumber = result;
         inputObj.secondNumber = '';
         inputObj.operator = '';
-    }
-    //console.log(result)
-    console.log(inputObj);
+    };
+    //console.log(inputObj);
 });
 
 const btnAC = document.querySelector('.allclear');
@@ -124,6 +101,5 @@ btnAC.addEventListener('click', () => {
 const btnC = document.querySelector('.clear');
 btnC.addEventListener('click', () => {
     displayNumber = '';
-    //console.log(displayNumber);
     screen.textContent = displayNumber;
 })
