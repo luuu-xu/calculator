@@ -49,14 +49,7 @@ btnsOperator.forEach((btn) => {
             inputObj.operator = window[btn.classList[0]];
         } else if (inputObj.firstNumber !== '' && inputObj.operator !== '') {
             inputObj.secondNumber = (Number(displayNumber));
-            let result = operate(inputObj);
-            if (result.toString().length > 11) {
-                if (result.toString().includes('.')) {
-                    result = parseFloat(result.toPrecision(11));
-                } else {
-                    result = Number(result.toString().slice(0, 11));
-                };
-            };
+            let result = limitDigits(operate(inputObj));
             screen.textContent = result;
             displayNumber = '';
             inputObj.firstNumber = result;
@@ -71,14 +64,7 @@ const btnEqual = document.querySelector('.equal');
 btnEqual.addEventListener('click', () => {
     if (inputObj.firstNumber !== '' && inputObj.operator !== '') {
         inputObj.secondNumber = (Number(displayNumber));
-        let result = operate(inputObj);
-        if (result.toString().length > 11) {
-            if (result.toString().includes('.')) {
-                result = parseFloat(result.toPrecision(11));
-            } else {
-                result = Number(result.toString().slice(0, 11));
-            };
-        };
+        let result = limitDigits(operate(inputObj));
         screen.textContent = result;
         displayNumber = '';
         inputObj.firstNumber = result;
@@ -102,4 +88,47 @@ const btnC = document.querySelector('.clear');
 btnC.addEventListener('click', () => {
     displayNumber = '';
     screen.textContent = displayNumber;
-})
+});
+
+const btnDot = document.querySelector('.dot');
+btnDot.addEventListener('click', () => {
+    if (!displayNumber.includes('.')) {
+        displayNumber += '.';
+        screen.textContent = displayNumber;
+    };
+});
+
+const btnPlusminus = document.querySelector('.plusminus');
+btnPlusminus.addEventListener('click', () => {
+    if (!displayNumber.startsWith('-')) {
+        //console.log('no');
+        displayNumber = '-' + displayNumber;
+        screen.textContent = displayNumber;
+    } else if (displayNumber.startsWith('-')) {
+        displayNumber = displayNumber.slice(1);
+        screen.textContent = displayNumber;
+    };
+});
+
+function limitDigits(result) {
+    if (result.toString().length > 11) {
+        if (result.toString().includes('-')) {
+            if (result.toString().includes('0.')) {
+                result = parseFloat(result.toPrecision(9));
+            } else if (result.toString().includes('.')) {
+                result = parseFloat(result.toPrecision(10));
+            } else {
+                result = Number(result.toString().slice(0, 12));
+            };
+        } else {
+            if (result.toString().includes('0.')) {
+                result = parseFloat(result.toPrecision(10));
+            } else if (result.toString().includes('.')) {
+                result = parseFloat(result.toPrecision(11));
+            } else {
+                result = Number(result.toString().slice(0, 11));
+            };
+        };
+    };
+    return result;
+};

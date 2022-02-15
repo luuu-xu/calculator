@@ -13,3 +13,6 @@ The basic version of the calculator is finally finished!
 - btnAC and btnC are much easier after all of above works.
 
 
+- Just found out that the codes inside btnOperator and btnEqual which manupilates the digits of the number are growing too complicated, after adding the feature of turning positive number to negative number. Thus the codes are transferred out and became a new function limitDigits().
+- Added btnDot which allows the user to enter only one dot into the displayNumber.
+- Added btnPlusminus which allows the user to turn a positive number to a negative one and vice versa. 
