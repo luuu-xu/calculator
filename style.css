@@ -1,0 +1,24 @@
+button {
+    font-weight: bold;
+    font-size: xx-large;
+    border-radius: 10%;
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(6, 100px);
+    gap: 3px;
+}
+
+.screen {
+    grid-column: 1 / 5;
+    font-size: 70px;
+    font-weight: bold;
+    justify-self: end;
+    align-self: end;
+}
+
+.zero {
+    grid-column: 1 / 3;
+}
